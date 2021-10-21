@@ -4,6 +4,7 @@ const passport = require('passport')
 const app = express()
 
 app.use(passport.initialize())
+require('./middleware/passport.middleware')(passport)
 app.use(require('morgan')('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
