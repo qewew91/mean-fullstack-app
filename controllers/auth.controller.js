@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const User = require('../models/user.model')
+const errorHandler = require('../utils/error-handler.util')
 
 const register = async (req, res) => {
   try {
@@ -21,7 +22,7 @@ const register = async (req, res) => {
     res.status(201).json(user)
 
   } catch (e) {
-    res.status(500).json({ message: 'Something went wrong, try again.' })
+    errorHandler(res, e)
   }
 }
 
@@ -47,7 +48,7 @@ const login = async (req, res) => {
 
     res.json({ token: `Bearer ${token}` })
   } catch (e) {
-    res.status(500).json({ message: 'Something went wrong, try again.' })
+    errorHandler(res, e)
   }
 }
 
