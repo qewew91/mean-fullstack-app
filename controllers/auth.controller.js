@@ -45,7 +45,7 @@ const login = async (req, res) => {
       { expiresIn: '1h' }
     )
 
-    res.json({ token })
+    res.json({ token: `Bearer ${token}` })
   } catch (e) {
     res.status(500).json({ message: 'Something went wrong, try again.' })
   }
